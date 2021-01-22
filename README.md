@@ -158,9 +158,14 @@ You can build a binary using the following commands. Windows is not supported no
 go get github.com/jteeuwen/go-bindata/...
 go get github.com/tools/godep
 
+# Initialization
+go mod init github.com/c4fun/gotty
+
 # Build
-make
+make all
 ```
+
+If godep is not found, please add go bin to PATH.
 
 To build the frontend part (JS files and other static files), you need `npm`.
 
