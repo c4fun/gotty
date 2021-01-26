@@ -12,6 +12,7 @@ export const msgSetWindowTitle = '3';
 export const msgSetPreferences = '4';
 export const msgSetReconnect = '5';
 
+const navLang = navigator.language;
 
 export interface Terminal {
     info(): { columns: number, rows: number };
@@ -126,7 +127,6 @@ export class WebTTY {
             connection.onClose(() => {
                 clearInterval(pingTimer);
                 this.term.deactivate();
-                const navLang = navigator.language;
                 if (navLang === 'zh-CN' || navLang === 'zh-TW') {
                     this.term.showMessage("连接已断开", 0);
                 } else {
