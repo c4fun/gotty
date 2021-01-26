@@ -126,7 +126,12 @@ export class WebTTY {
             connection.onClose(() => {
                 clearInterval(pingTimer);
                 this.term.deactivate();
-                this.term.showMessage("Connection Closed", 0);
+                const navLang = navigator.language;
+                if (navLang === 'zh-CN' || navLang === 'zh-TW') {
+                    this.term.showMessage("连接已断开", 0);
+                } else {
+                    this.term.showMessage("Connection CLOSED!", 0);
+                }
                 if (this.reconnect > 0) {
                     reconnectTimeout = setTimeout(() => {
                         connection = this.connectionFactory.create();
