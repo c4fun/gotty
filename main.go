@@ -11,10 +11,10 @@ import (
 
 	"github.com/codegangsta/cli"
 
-	"github.com/yudai/gotty/backend/localcommand"
-	"github.com/yudai/gotty/pkg/homedir"
-	"github.com/yudai/gotty/server"
-	"github.com/yudai/gotty/utils"
+	"github.com/c4fun/gotty/backend/localcommand"
+	"github.com/c4fun/gotty/pkg/homedir"
+	"github.com/c4fun/gotty/server"
+	"github.com/c4fun/gotty/utils"
 )
 
 func main() {
@@ -95,7 +95,7 @@ func main() {
 		ctx, cancel := context.WithCancel(context.Background())
 		gCtx, gCancel := context.WithCancel(context.Background())
 
-		log.Printf("GoTTY is starting with command: %s", strings.Join(args, " "))
+		log.Printf("GoTTY is going to start with command: %s", strings.Join(args, " "))
 
 		errs := make(chan error, 1)
 		go func() {
