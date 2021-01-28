@@ -158,9 +158,6 @@ You can build a binary using the following commands. Windows is not supported no
 go get github.com/jteeuwen/go-bindata/...
 go get github.com/tools/godep
 
-# Initialization
-go mod init github.com/c4fun/gotty
-
 # Build
 make all
 ```
@@ -168,6 +165,35 @@ make all
 If godep is not found, please add go bin to PATH.
 
 To build the frontend part (JS files and other static files), you need `npm`.
+
+### Change to Godep to go modules
+
+```sh
+# Install tools
+go get github.com/jteeuwen/go-bindata/...
+
+# Initialization  (creates a new go.mod file that imports dependencies from Godeps.json, Gopkg.lock)
+go mod init github.com/c4fun/gotty
+
+## My Go module build (NOTHING HAPPENED)
+go build ./...  
+
+## Finds all the packages transitively imported by packages in your module
+go mod tidy
+
+## Compare current graph with old dependency management file (Godeps.json)
+go mod graph
+go get github.com/codegangsta/cli@v1.19.1
+
+## Build
+sudo make all
+
+```
+
+
+### Change Favicon
+
+If you want to change the favicon, replace `resources/favicon.png`
 
 ## Architecture
 
